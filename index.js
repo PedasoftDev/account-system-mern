@@ -22,16 +22,13 @@ app.get("/", (req, res) => {
 app.use("/auth", auth);
 const PORT = process.env.PORT || 5005;
 
-mongoose
-  .connect(process.env.CONNECTION_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log(`Server is running on port: ${PORT}`);
-    });
-  })
-  .catch((err) => {
-    console.log(err);
+mongoose.connect(process.env.CONNECTION_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server is running on port: ${PORT}`);
   });
+}).catch((err) => {
+  console.log(err);
+});
